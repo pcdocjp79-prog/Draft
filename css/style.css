@@ -50,7 +50,6 @@ img {
 }
 
 /* Page-specific styles extracted from 1.1.html */
-body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
 .font-display { font-family: 'Geist', sans-serif; }
 
 @keyframes fadeSlideIn {
@@ -115,6 +114,95 @@ body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; ov
   background: transparent;
 }
 
+
+.glass-nav {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nav-mouse-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  opacity: 0;
+  background: radial-gradient(
+    220px circle at var(--glow-x) var(--glow-y),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.25) 28%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  transition: opacity 220ms ease;
+  will-change: background, opacity;
+}
+
+.glass-nav.is-glow-active .nav-mouse-glow {
+  opacity: 1;
+}
+
+.glass-nav > *:not(.nav-mouse-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-link {
+  transition: transform 250ms ease, filter 250ms ease;
+}
+
+.brand-link:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 6px 14px rgba(98, 173, 255, 0.35));
+}
+
+.nav-link {
+  transition: color 250ms ease, background-color 250ms ease;
+}
+
+.nav-link:hover {
+  color: #ff8ec4;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+  .glass-nav {
+    border-radius: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass-nav {
+    padding: 0.55rem 0.7rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand-link {
+    min-width: 0;
+  }
+
+  .brand-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 46vw;
+
 .brand-link {
   transition: filter 0.3s ease, transform 0.3s ease;
 }
@@ -156,5 +244,6 @@ body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; ov
 
   .top-nav nav a {
     font-size: 1rem;
+
   }
 }
