@@ -114,6 +114,7 @@ img {
   background: transparent;
 }
 
+
 .glass-nav {
   --glow-x: 50%;
   --glow-y: 50%;
@@ -201,5 +202,48 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 46vw;
+
+.brand-link {
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.brand-link:hover {
+  filter: drop-shadow(0 0 14px rgba(44, 137, 238, 0.35));
+}
+
+.nav-link-glow {
+  position: relative;
+  text-shadow: 0 0 0 rgba(239, 59, 143, 0);
+}
+
+.nav-link-glow::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(239, 59, 143, 0.35) 0%, rgba(239, 59, 143, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.nav-link-glow:hover {
+  color: #ff62aa;
+  text-shadow: 0 0 12px rgba(255, 102, 173, 0.75);
+}
+
+.nav-link-glow:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .brand-link span {
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+  }
+
+  .top-nav nav a {
+    font-size: 1rem;
+
   }
 }
