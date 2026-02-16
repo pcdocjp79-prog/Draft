@@ -37,26 +37,19 @@
     </div>
 
     <!-- Navigation -->
-    <header class="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center animate-enter">
-      <div class="glass-card rounded-full px-2 py-2 flex items-center gap-1 shadow-2xl shadow-black/50">
-        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-white/5 rounded-full transition-colors">
-          <div class="w-6 h-6 bg-white rounded flex items-center justify-center text-black font-bold text-xs">S</div>
-          <span class="font-display font-semibold text-sm tracking-wide">SEAINT</span>
+    <header class="top-nav fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-5 animate-enter">
+      <div id="glass-nav" class="glass-nav max-w-6xl mx-auto">
+        <span class="nav-mouse-glow" aria-hidden="true"></span>
+
+        <a href="#" class="brand-link flex items-center gap-3 rounded-full px-2 py-1">
+          <img src="assets/sw-studio_logo.png" alt="Smart Web Studio Logo" class="h-10 w-auto md:h-12" />
+          <span class="font-display font-semibold text-base sm:text-lg md:text-xl tracking-[0.1em] text-[#62adff]">Smart Web Studio</span>
         </a>
 
-        <nav class="hidden md:flex items-center">
-          <a href="#product" class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors">Product</a>
-          <a href="#logic" class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors">Logic</a>
-          <a href="#voice" class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors">Voice</a>
-          <a href="#pricing" class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors">Pricing</a>
+        <nav class="flex items-center gap-1 sm:gap-2">
+          <a href="#product" class="nav-link rounded-full px-3 sm:px-5 py-2 text-sm sm:text-base font-medium text-[#ff5dac]">Services</a>
+          <a href="#logic" class="nav-link rounded-full px-3 sm:px-5 py-2 text-sm sm:text-base font-medium text-[#ff5dac]">über uns</a>
         </nav>
-
-        <div class="pl-2 pr-1">
-          <a href="#" class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-zinc-200 transition-colors">
-            <span>Book Demo</span>
-            <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
-          </a>
-        </div>
       </div>
     </header>
 

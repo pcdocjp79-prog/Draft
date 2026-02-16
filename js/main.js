@@ -27,6 +27,54 @@ document
   .querySelectorAll(".reveal-on-scroll")
   .forEach((el) => observer.observe(el));
 
+
+// Glass Nav Mouse Glow
+const glassNav = document.getElementById("glass-nav");
+
+if (glassNav && window.matchMedia("(pointer: fine)").matches) {
+  let rect = null;
+  let rafId = null;
+  let targetX = 0;
+  let targetY = 0;
+
+  const updateRect = () => {
+    rect = glassNav.getBoundingClientRect();
+  };
+
+  const renderGlow = () => {
+    glassNav.style.setProperty("--glow-x", `${targetX}px`);
+    glassNav.style.setProperty("--glow-y", `${targetY}px`);
+    rafId = null;
+  };
+
+  const queueRender = () => {
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(renderGlow);
+  };
+
+  glassNav.addEventListener("pointerenter", (event) => {
+    updateRect();
+    glassNav.classList.add("is-glow-active");
+    targetX = event.clientX - rect.left;
+    targetY = event.clientY - rect.top;
+    queueRender();
+  });
+
+  glassNav.addEventListener("pointermove", (event) => {
+    if (!rect) updateRect();
+    targetX = event.clientX - rect.left;
+    targetY = event.clientY - rect.top;
+    queueRender();
+  });
+
+  glassNav.addEventListener("pointerleave", () => {
+    glassNav.classList.remove("is-glow-active");
+  });
+
+  window.addEventListener("resize", updateRect);
+  window.addEventListener("scroll", updateRect, { passive: true });
+}
+
 // Logic Tab Switcher
 function switchTab(tab) {
   document.querySelectorAll(".tab-content").forEach((el) => el.classList.add("hidden"));
