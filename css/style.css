@@ -154,7 +154,7 @@ img {
 }
 
 .glass-nav.is-glow-active .nav-mouse-glow {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .glass-nav > *:not(.nav-mouse-glow) {
