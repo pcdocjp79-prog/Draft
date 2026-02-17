@@ -210,6 +210,8 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 46vw;
+  }
+}
 
 .brand-link {
   transition: filter 0.3s ease, transform 0.3s ease;
@@ -252,6 +254,5 @@ img {
 
   .top-nav nav a {
     font-size: 1rem;
-
   }
 }
