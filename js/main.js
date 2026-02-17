@@ -12,6 +12,29 @@ document
   .forEach((el) => observer.observe(el));
 
 
+
+// Parallax background scroll
+const pageBg = document.querySelector(".page-bg");
+
+if (pageBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const parallaxSpeed = 0.22;
+  let rafId = null;
+
+  const updateParallax = () => {
+    const offset = -(window.scrollY * parallaxSpeed);
+    document.body.style.setProperty("--parallax-offset", offset.toFixed(2));
+    rafId = null;
+  };
+
+  const queueParallax = () => {
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(updateParallax);
+  };
+
+  queueParallax();
+  window.addEventListener("scroll", queueParallax, { passive: true });
+}
+
 // Hide/reveal top navigation on scroll direction
 const topNav = document.querySelector(".top-nav");
 
