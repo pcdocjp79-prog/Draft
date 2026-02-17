@@ -1,8 +1,8 @@
 :root {
   --primary-color: #00d4ff;
   --secondary-color: #ff00ff;
-  --bg-color: #0d0d0d;
-  --text-color: #ffffff;
+  --bg-color: #ffffff;
+  --text-color: #111111;
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.2);
   --font-main: "Inter", sans-serif;
@@ -17,6 +17,7 @@
 
 body {
   background-color: var(--bg-color);
+  background-image: none;
   color: var(--text-color);
   font-family: var(--font-main);
   line-height: 1.6;
