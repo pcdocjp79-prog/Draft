@@ -112,6 +112,13 @@ img {
 
 .top-nav {
   background: transparent;
+  transition: transform 280ms ease, opacity 280ms ease;
+  will-change: transform;
+}
+
+.top-nav.nav-hidden {
+  transform: translateY(calc(-100% - 1.5rem));
+  opacity: 0;
 }
 
 
