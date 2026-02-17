@@ -16,12 +16,36 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  --parallax-offset: 0;
+  background-color: #05070d;
   background-image: none;
   color: var(--text-color);
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+.page-bg {
+  position: fixed;
+  inset: -20vh 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(180deg, rgba(2, 5, 14, 0.3) 0%, rgba(2, 5, 14, 0.82) 82%, rgba(2, 5, 14, 0.95) 100%),
+    url("../assets/background.webp");
+  background-size: cover;
+  background-position: center top;
+  transform: translate3d(0, calc(var(--parallax-offset) * 1px), 0);
+  will-change: transform;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .page-bg {
+    transform: none;
+  }
 }
 
 a {
