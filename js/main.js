@@ -28,6 +28,37 @@ document
   .forEach((el) => observer.observe(el));
 
 
+// Hide/reveal top navigation on scroll direction
+const topNav = document.querySelector(".top-nav");
+
+if (topNav) {
+  let lastScrollY = window.scrollY;
+  const minDelta = 6;
+
+  const toggleNavOnScroll = () => {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    if (currentScrollY <= 20) {
+      topNav.classList.remove("nav-hidden");
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (Math.abs(scrollDelta) < minDelta) return;
+
+    if (scrollDelta > 0) {
+      topNav.classList.add("nav-hidden");
+    } else {
+      topNav.classList.remove("nav-hidden");
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener("scroll", toggleNavOnScroll, { passive: true });
+}
+
 // Glass Nav Mouse Glow
 const glassNav = document.getElementById("glass-nav");
 
