@@ -218,3 +218,23 @@ function updatePricingUI() {
 window.switchTab = switchTab;
 window.setBilling = setBilling;
 window.selectPlan = selectPlan;
+
+// Hamburger Menu
+const menuToggle = document.getElementById("menu-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+const menuIcon = document.getElementById("menu-icon");
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = !mobileMenu.classList.contains("hidden");
+    mobileMenu.classList.toggle("hidden");
+    menuIcon.setAttribute("icon", isOpen ? "solar:hamburger-menu-linear" : "solar:close-circle-linear");
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      menuIcon.setAttribute("icon", "solar:hamburger-menu-linear");
+    });
+  });
+}
